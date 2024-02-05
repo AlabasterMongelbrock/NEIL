@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Welcome to My Website</h1>  
-    </main>
-	<script src="index.js"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<title>Document</title>
+<style>
+body {
+background-color: antiquewhite;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.contents {
+width: 70%;
+}
+
+h1,
+h2 {
+text-align: center;
+}
+h3 {
+text-align: left;
+color: rgb(91, 142, 141);
+}
+a {
+color: rgb(91, 142, 141);
+}
+</style>
+</head>
+<body>
+<div class="contents">
+<h1>My website</h1>
+<h2>About me</h2>
+<hr />
+<p>
+I'm a fool Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+Aliquid ipsa cum blanditiis placeat, minima animi, sunt molestias
+asperiores dicta accusantium quis fuga, excepturi exercitationem
+possimus eveniet saepe dolor voluptates fugiat sed nostrum. Deserunt
+explicabo magnam architecto enim? Laudantium, iusto dicta, error,
+doloribus eius natus omnis ipsam illo iure dignissimos fugit!
+</p>
+<h2>My articles</h2>
+
+<div id="posts"></div>
+<script>
+$.getJSON("./posts", (data) => {
+console.log(data); //["doc1.jpg", "doc2.jpg", "doc3.jpg"]
+console.log(data[1]);
+data.forEach((name) => {
+var posts = document.getElementById("posts");
+
+var a = document.createElement("a");
+var link = document.createTextNode(name.slice(0, -5 ));
+a.appendChild(link);
+a.title = name;
+a.href = "www.neil.com/" + name;
+posts.appendChild(a);
+posts.appendChild(document.createElement("hr"));
+});
+});
+</script>
+</div>
+</body>
 </html>
